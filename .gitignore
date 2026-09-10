@@ -1,0 +1,23 @@
+# autotools generated
+Makefile
+Makefile.in
+/configure
+/config.h
+/config.h.in
+/config.log
+/config.status
+/stamp-h1
+/aclocal.m4
+/autom4te.cache/
+/build-aux/
+/m4/
+.deps/
+.dirstamp
+
+# build output
+*.o
+/wmapps
+*.tar.gz
+
+# local icon previews
+icon/preview*.png

@@ -1,0 +1,12 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=wmapps
+GenericName=Application Launcher
+Comment=Search and launch installed applications
+Exec=wmapps
+Icon=wmapps
+Terminal=false
+Categories=Utility;
+Keywords=launcher;search;applications;menu;run;
+StartupNotify=false
