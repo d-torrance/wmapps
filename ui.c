@@ -323,13 +323,6 @@ UI *ui_new(WMScreen *scr, const char *icon_theme)
 	WMResizeWidget(ui->win, width, height);
 	WMSetWindowMinSize(ui->win, WMScaleX(280), WMScaleY(200));
 
-	/* One third down reads better than dead centre.  Must be set before
-	 * the window is realized for the hint to be seen.
-	 */
-	WMSetWindowUserPosition(ui->win,
-				((int)WMScreenWidth(scr) - width) / 2,
-				((int)WMScreenHeight(scr) - height) / 3);
-
 	/* Reuse the icon main.c already installed, so a miniaturized window
 	 * matches the appicon instead of reverting to the default.
 	 */
