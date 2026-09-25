@@ -89,9 +89,10 @@ static void set_application_icon(WMScreen *scr)
 {
 	RImage *icon;
 
-	icon = RGetImageFromXPMData(WMScreenRContext(scr), wmapps_icon_xpm);
+	icon = RCreateImage(WMAPPS_ICON_WIDTH, WMAPPS_ICON_HEIGHT, True);
 	if (!icon)
 		return;
+	memcpy(icon->data, wmapps_icon_rgba, sizeof(wmapps_icon_rgba));
 
 	WMSetApplicationIconImage(scr, icon);
 	RReleaseImage(icon);

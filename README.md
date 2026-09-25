@@ -84,14 +84,16 @@ The icon is generated rather than hand-drawn:
 
     cd icon && python3 make-icon.py
 
-That writes both `wmapps.xpm` (installed for Window Maker) and `wmapps_icon.h`
-(compiled into the binary, so the appicon is correct even when nothing has been
-installed). Editing the script and re-running it is the supported way to change
-the artwork; it draws to a palette-indexed grid and emits XPM directly, keeping
-the hard-edged, unantialiased look the rest of Window Maker's icons have. Its
-comments record why the fiddly bits are the way they are -- the handle's angle
-and alignment, the literal staircase in the ears, the draw order that puts the
-head's edge over them.
+That writes both `wmapps.png` (installed for Window Maker) and `wmapps_icon.h`
+(the same RGBA pixels compiled into the binary, so the appicon is correct even
+when nothing has been installed). Editing the script and re-running it is the
+supported way to change the artwork. It draws vector shapes with pycairo at the
+final 48x48 size, so edges are antialiased and surfaces are shaded with
+gradients; the soft edges and translucent glass need real alpha, which is why the
+output is PNG rather than XPM. `python3 make-icon.py --preview FILE` also writes
+an 8x enlargement over a dock-tile grey for judging individual pixels. The
+script's comments record why the fiddly bits are the way they are -- the
+handle's angle and alignment, the literal staircase in the ears.
 
 ## Installing as a desktop application
 
@@ -100,11 +102,7 @@ head's edge over them.
 which includes its own, so it turns up in its own list:
 
     $(datadir)/applications/wmapps.desktop
-    $(datadir)/icons/hicolor/48x48/apps/wmapps.xpm
-
-The icon is installed as XPM rather than converted to PNG; the icon theme
-specification requires implementations to handle XPM, and `wmapps` itself reads
-it through gdk-pixbuf.
+    $(datadir)/icons/hicolor/48x48/apps/wmapps.png
 
 One thing to know if the entry ever seems to be ignored: GIO refuses to load a
 desktop entry whose `Exec` program it cannot resolve, and this entry uses a

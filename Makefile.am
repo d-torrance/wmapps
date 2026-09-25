@@ -16,12 +16,11 @@ dist_desktop_DATA = wmapps.desktop
 
 # Window Maker looks for appicon and Dock images here.
 icondir = $(datadir)/WindowMaker/Icons
-dist_icon_DATA = icon/wmapps.xpm
+dist_icon_DATA = icon/wmapps.png
 
 # The same image again, where the XDG icon theme spec expects it, so that
-# Icon=wmapps resolves for us and for any other launcher.  XPM is a format the
-# spec requires implementations to handle, so there is no need to convert it.
+# Icon=wmapps resolves for us and for any other launcher.
 xdgicondir = $(datadir)/icons/hicolor/48x48/apps
-xdgicon_DATA = icon/wmapps.xpm
+xdgicon_DATA = icon/wmapps.png
 
 EXTRA_DIST = autogen.sh README.md icon/make-icon.py
